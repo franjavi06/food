@@ -4,11 +4,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import * as Icon from "react-native-feather";
 import { themeColors } from "../theme";
-import Categories from "../components/categories";
+import Categories from "../components/Categories";
+import { featured } from "../constants";
+import FeaturedRow from "../components/FeaturedRow";
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView className="bg-white">
       <StatusBar barStyle="dark-content" />
       {/* Search Bar */}
       <View className="flex-row items-center space-x-2 px-4 pb-2">
@@ -39,6 +41,21 @@ const HomeScreen = () => {
       >
         {/* Categories */}
         <Categories />
+
+        {/* Featured Rows */}
+        <View className="mt-5">
+          {
+            [featured, featured, featured].map((item, index) => (
+              <FeaturedRow 
+              key={index} 
+              title={item.title} 
+              description={item.description} 
+              restaurants={item.restaurants} 
+              />  
+            ))
+          }
+        </View>
+
       </ScrollView>
     </SafeAreaView>
   );

@@ -13,26 +13,26 @@ const Categories = () => {
         contentContainerStyle={{ paddingHorizontal: 15 }}
       >
         {categories.map((category, index) => {
-          let isActive = category.id === activeCategory;
+          let isActive = category.id == activeCategory;
           let btnClass = isActive ? "bg-gray-600" : "bg-gray-200";
           let textClass = isActive
             ? "font-semibold text-gray-800"
             : "text-gray-500";
           return (
             <View
-              key={category.id}
+              key={index}
               className="flex items-center justify-center mr-6"
             >
               <TouchableOpacity
                 onPress={() => setActiveCategory(category.id)}
-                className={"p-1 rounded-full shadow" + btnClass}
+                className={"p-1 rounded-full shadow bg-gray-200 " + btnClass}
               >
                 <Image
                   style={{ width: 45, height: 45 }}
                   source={category.image}
                 />
               </TouchableOpacity>
-              <Text className={"text-sm" + textClass}>{category.name}</Text>
+              <Text className={"text-sm " + textClass}>{category.name}</Text>
             </View>
           );
         })}
